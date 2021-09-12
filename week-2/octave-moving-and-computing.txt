@@ -1,0 +1,945 @@
+GNU Octave, version 6.2.0
+Copyright (C) 2021 The Octave Project Developers.
+This is free software; see the source code for copying conditions.
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type 'warranty'.
+
+Octave was configured for "x86_64-w64-mingw32".
+
+Additional information about Octave is available at https://www.octave.org.
+
+Please contribute if you find this software useful.
+For more information, visit https://www.octave.org/get-involved.html
+
+Read https://www.octave.org/bugs.html to learn how to submit bug reports.
+For information about changes from previous versions, type 'news'.
+
+>> % Moving data around
+>> A
+error: 'A' undefined near line 1, column 1
+>> A = [1 2 ; 3 4 ; 5 6]
+A =
+
+   1   2
+   3   4
+   5   6
+
+>> size(A)
+ans =
+
+   3   2
+
+>> size(A) % returns a 1 x 2 matrix
+ans =
+
+   3   2
+
+>> sz
+error: 'sz' undefined near line 1, column 1
+>> sz = size (A)
+sz =
+
+   3   2
+
+>> sz = size (A) % a 1 x 2 matrix
+sz =
+
+   3   2
+
+>> size (A, 1)
+ans = 3
+>> size (A, 1) % number of rows
+ans = 3
+>> size (A, 2) % number of columns
+ans = 2
+>> v = [ 1 2 3 4 ]
+v =
+
+   1   2   3   4
+
+>> length(v)
+ans = 4
+>> length(v) % the longest dimension... usually applies to vectors. But can be done to get longest dimension of matr
+ix
+ans = 4
+>> length(A)
+ans = 3
+>> pwd
+ans = C:\Users\colma
+>> pwd
+ans = C:\Users\colma\source\repos\machine-learning-coursera\week-2
+>> ls
+ Volume in drive C is OS
+ Volume Serial Number is 3C9E-E536
+
+ Directory of C:\Users\colma\source\repos\machine-learning-coursera\week-2
+
+[.]                [..]               basic-operations
+               1 File(s)        199,507 bytes
+               2 Dir(s)  17,904,197,632 bytes free
+>> load featuresX.dat
+>> load priceY.dat
+>> who
+Variables visible from the current scope:
+
+A          ans        featuresX  priceY     sz         v
+
+>> featuresX
+featuresX =
+
+   1552      2
+   1599      2
+   1609      2
+   1660      2
+   1682      3
+   1803      2
+   1859      3
+   1913      3
+   1993      3
+   1994      4
+   1998      3
+   2093      4
+   2096      4
+   2138      4
+   2234      4
+   2305      3
+   2391      4
+   2438      3
+   2440      3
+   2505      4
+   2545      5
+   2582      2
+   2673      3
+   2765      4
+   2815      5
+   2816      4
+   2974      4
+   2980      4
+   3009      4
+   3015      4
+   3096      3
+   3112      4
+   3146      4
+   3195      5
+   3235      5
+   3240      5
+   3361      5
+   3382      5
+   3400      5
+   3487      3
+   3529      5
+   3531      5
+   3649      5
+   3715      6
+   3775      6
+   3840      5
+   3974      5
+
+>> size(featuresX_
+size(featuresX)
+error: parse error:
+
+  syntax error
+
+>>> size(featuresX)
+       ^
+>> size(featuresX)
+ans =
+
+   47    2
+
+>> size(priceY)
+ans =
+
+   47    1
+
+>> who
+Variables visible from the current scope:
+
+A          ans        featuresX  priceY     sz         v
+
+>> whos
+Variables visible from the current scope:
+
+variables in scope: top scope
+
+   Attr Name           Size                     Bytes  Class
+   ==== ====           ====                     =====  =====
+        A              3x2                         48  double
+        ans            1x2                         16  double
+        featuresX     47x2                        752  double
+        priceY        47x1                        376  double
+        sz             1x2                         16  double
+        v              1x4                         32  double
+
+Total is 155 elements using 1240 bytes
+
+>> clear featuresX
+>> whos
+Variables visible from the current scope:
+
+variables in scope: top scope
+
+   Attr Name        Size                     Bytes  Class
+   ==== ====        ====                     =====  =====
+        A           3x2                         48  double
+        ans         1x2                         16  double
+        priceY     47x1                        376  double
+        sz          1x2                         16  double
+        v           1x4                         32  double
+
+Total is 61 elements using 488 bytes
+
+>> v = priceY(1:10) % set v to the first 10 elements in vector Y
+v =
+
+   1552
+   1599
+   1609
+   1660
+   1682
+   1803
+   1859
+   1913
+   1993
+   1994
+
+>> save hello.mat v;  % save v to a file
+>> clear
+>> load(hello.mat)
+error: 'hello' undefined near line 1, column 1
+>> load hello.mat
+>> hello
+error: 'hello' undefined near line 1, column 1
+>> v
+v =
+
+   1552
+   1599
+   1609
+   1660
+   1682
+   1803
+   1859
+   1913
+   1993
+   1994
+
+>> save hello.txt v -ascii  % save as a human readable file
+>> A = [1 2; 3 4; 5 6]
+A =
+
+   1   2
+   3   4
+   5   6
+
+>> A[3, 2]
+error: parse error:
+
+  syntax error
+
+>>> A[3, 2]
+     ^
+>> A(3,2)  % 3rd row second column of A
+ans = 6
+>> A(2,:) % ":" means every element along that row/column
+ans =
+
+   3   4
+
+>> A(:,2) % ":" means every element along that row/column
+ans =
+
+   2
+   4
+   6
+
+>> A([1 3],:)  % get all the indexes of the specified rows... so row 1 and 3 here
+ans =
+
+   1   2
+   5   6
+
+>> A(:, 2 ) % second column
+ans =
+
+   2
+   4
+   6
+
+>> A(:, 2 ) = [10; 11; 12]  % assign a column vector to the second column
+A =
+
+    1   10
+    3   11
+    5   12
+
+>> A = [ A, [100, 101, 102]];   % append another column vector to the right
+error: horizontal dimensions mismatch (3x2 vs 1x3)
+>> A = [ A, [100; 101; 102]];   % append another column vector to the right
+>> A
+A =
+
+     1    10   100
+     3    11   101
+     5    12   102
+
+>> % that added a 3rd column....
+>> ans(A)
+error: ans(102): out of bound 3 (dimensions are 3x1) (note: variable 'ans' shadows function)
+>> size(A)
+ans =
+
+   3   3
+
+>> A(:)   % put all elements of A into a single vector
+ans =
+
+     1
+     3
+     5
+    10
+    11
+    12
+   100
+   101
+   102
+
+>> A = [1 2; 3 4 ; 5 6]
+A =
+
+   1   2
+   3   4
+   5   6
+
+>> B=  [11 12; 13 14;15 16]
+B =
+
+   11   12
+   13   14
+   15   16
+
+>> C = [A B]  % concat them together
+C =
+
+    1    2   11   12
+    3    4   13   14
+    5    6   15   16
+
+>> C = [A; B]  % the semi column usually means go to the next line... so this creates more rows
+C =
+
+    1    2
+    3    4
+    5    6
+   11   12
+   13   14
+   15   16
+
+>> [A, B]
+ans =
+
+    1    2   11   12
+    3    4   13   14
+    5    6   15   16
+
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>> clear
+>> A = [ 1 2; 3 4 ; 5 6 ]
+A =
+
+   1   2
+   3   4
+   5   6
+
+>> B = [11 12; 13 14; 15 16]
+B =
+
+   11   12
+   13   14
+   15   16
+
+>> C = [1 1; 2 2]
+C =
+
+   1   1
+   2   2
+
+>> A*C
+ans =
+
+    5    5
+   11   11
+   17   17
+
+>> A .* B
+ans =
+
+   11   24
+   39   56
+   75   96
+
+>> A .* B  % element-wise multiplication of matrix
+ans =
+
+   11   24
+   39   56
+   75   96
+
+>> A .^2   % squaring A
+ans =
+
+    1    4
+    9   16
+   25   36
+
+>> v = [1; 2; 3]
+v =
+
+   1
+   2
+   3
+
+>> 1 ./ v
+ans =
+
+   1.0000
+   0.5000
+   0.3333
+
+>> 1 ./ A  % the period says it's an elementwise operation...
+ans =
+
+   1.0000   0.5000
+   0.3333   0.2500
+   0.2000   0.1667
+
+>> exp(v)
+ans =
+
+    2.7183
+    7.3891
+   20.0855
+
+>> log(v)
+ans =
+
+        0
+   0.6931
+   1.0986
+
+>> abs(v)
+ans =
+
+   1
+   2
+   3
+
+>> abs([-1 -3])
+ans =
+
+   1   3
+
+>> -v
+ans =
+
+  -1
+  -2
+  -3
+
+>> -v % -1*v
+ans =
+
+  -1
+  -2
+  -3
+
+>> v + ones(length(v), 1)
+ans =
+
+   2
+   3
+   4
+
+>> v + ones(length(v), 1)  % increment each element of vector by 1
+ans =
+
+   2
+   3
+   4
+
+>> ones(3,1)
+ans =
+
+   1
+   1
+   1
+
+>> v + ones(3,1)
+ans =
+
+   2
+   3
+   4
+
+>> v + 1
+ans =
+
+   2
+   3
+   4
+
+>>
+>>
+>> A
+A =
+
+   1   2
+   3   4
+   5   6
+
+>> A'
+ans =
+
+   1   3   5
+   2   4   6
+
+>> A'  % transpose
+ans =
+
+   1   3   5
+   2   4   6
+
+>> (A')'  % transpose twice... so get A again
+ans =
+
+   1   2
+   3   4
+   5   6
+
+>> a [ 1 15 2 0.5 ]
+error: parse error:
+
+  syntax error
+
+>>> a [ 1 15 2 0.5 ]
+      ^
+>> val(max(a)
+val = max(a)
+error: parse error:
+
+  syntax error
+
+>>> val = max(a)
+      ^
+>> a
+error: 'a' undefined near line 1, column 1
+>> a = [ 1 15 2 0.5 ]
+a =
+
+    1.0000   15.0000    2.0000    0.5000
+
+>> val = max(a)
+val = 15
+>> [val, ind] = max(a)  % get the value and index of the maximum element in the vector
+val = 15
+ind = 2
+>> A
+A =
+
+   1   2
+   3   4
+   5   6
+
+>> max(A) % A is matrix... so it gives the columnwise maximum
+ans =
+
+   5   6
+
+>> a
+a =
+
+    1.0000   15.0000    2.0000    0.5000
+
+>> a < 3
+ans =
+
+  1  0  1  1
+
+>> a < 3 % evaluates..
+ans =
+
+  1  0  1  1
+
+>> find(a < 3)
+ans =
+
+   1   3   4
+
+>> A = magic(3)
+A =
+
+   8   1   6
+   3   5   7
+   4   9   2
+
+>> help magic
+'magic' is a function from the file C:\Program Files\GNU Octave\Octave-6.2.0\mingw64\share\octave\6.2.0\m\special-mat
+rix\magic.m
+
+ -- magic (N)
+
+     Create an N-by-N magic square.
+
+     A magic square is an arrangement of the integers '1:n^2' such that
+     the row sums, column sums, and diagonal sums are all equal to the
+     same value.
+
+     Note: N must be a scalar greater than or equal to 3.  If you supply
+     N less than 3, magic returns either a nonmagic square, or else the
+     degenerate magic squares 1 and [].
+
+Additional help for built-in functions and operators is
+available in the online version of the manual.  Use the command
+'doc <topic>' to search the manual index.
+
+Help and information about Octave is also available on the WWW
+at https://www.octave.org and via the help@octave.org
+mailing list.
+>> % all of the rows and columns add up to the same square
+>> [r,c]
+error: 'r' undefined near line 1, column 1
+>> [r,c] = find(A > 7)
+r =
+
+   1
+   3
+
+c =
+
+   1
+   2
+
+>> [r,c] = find(A >= 7)
+r =
+
+   1
+   3
+   2
+
+c =
+
+   1
+   2
+   3
+
+>> A(2,3)
+ans = 7
+>> help find
+'find' is a built-in function from the file libinterp/corefcn/find.cc
+
+ -- IDX = find (X)
+ -- IDX = find (X, N)
+ -- IDX = find (X, N, DIRECTION)
+ -- [i, j] = find (...)
+ -- [i, j, v] = find (...)
+     Return a vector of indices of nonzero elements of a matrix, as a
+     row if X is a row vector or as a column otherwise.
+
+     To obtain a single index for each matrix element, Octave pretends
+     that the columns of a matrix form one long vector (like Fortran
+     arrays are stored).  For example:
+
+          find (eye (2))
+            => [ 1; 4 ]
+
+     If two inputs are given, N indicates the maximum number of elements
+     to find from the beginning of the matrix or vector.
+
+     If three inputs are given, DIRECTION should be one of "first" or
+     "last", requesting only the first or last N indices, respectively.
+     However, the indices are always returned in ascending order.
+
+     If two outputs are requested, 'find' returns the row and column
+     indices of nonzero elements of a matrix.  For example:
+
+          [i, j] = find (2 * eye (2))
+              => i = [ 1; 2 ]
+              => j = [ 1; 2 ]
+
+     If three outputs are requested, 'find' also returns a vector
+     containing the nonzero values.  For example:
+
+          [i, j, v] = find (3 * eye (2))
+                 => i = [ 1; 2 ]
+                 => j = [ 1; 2 ]
+                 => v = [ 3; 3 ]
+
+     Note that this function is particularly useful for sparse matrices,
+     as it extracts the nonzero elements as vectors, which can then be
+     used to create the original matrix.  For example:
+
+          sz = size (a);
+          [i, j, v] = find (a);
+          b = sparse (i, j, v, sz(1), sz(2));
+
+     See also: nonzeros.
+
+Additional help for built-in functions and operators is
+available in the online version of the manual.  Use the command
+'doc <topic>' to search the manual index.
+
+Help and information about Octave is also available on the WWW
+at https://www.octave.org and via the help@octave.org
+mailing list.
+>> sum(a)  % add up all elements of a
+ans = 18.500
+>> prod(a)  % product of all elements of a
+ans = 15
+>> floor (a) % round down
+ans =
+
+    1   15    2    0
+
+>> ceil(a) % round up
+ans =
+
+    1   15    2    1
+
+>> rand(3)
+ans =
+
+   0.8170   0.8802   0.3939
+   0.7376   0.2389   0.9897
+   0.8196   0.7671   0.9791
+
+>> #max(rand(
+>> max(rand(3), rand(3))
+ans =
+
+   0.7278   0.4909   0.6035
+   0.5535   0.8692   0.9819
+   0.6282   0.7099   0.9915
+
+>> A
+A =
+
+   8   1   6
+   3   5   7
+   4   9   2
+
+>> max(A, [], 1) % takes the columnwiose maximum....
+ans =
+
+   8   9   7
+
+>> max(A,[],2)  % the per row maximum...
+ans =
+
+   8
+   7
+   9
+
+>> A
+A =
+
+   8   1   6
+   3   5   7
+   4   9   2
+
+>> max(A)
+ans =
+
+   8   9   7
+
+>> max(max(A))
+ans = 9
+>> A(:)  % treats A as a vector
+ans =
+
+   8
+   3
+   4
+   1
+   5
+   9
+   6
+   7
+   2
+
+>> max(A(:))  % treats A as a vector
+ans = 9
+>> A = magic(9)  % every column and every row sums to the same thing
+A =
+
+   47   58   69   80    1   12   23   34   45
+   57   68   79    9   11   22   33   44   46
+   67   78    8   10   21   32   43   54   56
+   77    7   18   20   31   42   53   55   66
+    6   17   19   30   41   52   63   65   76
+   16   27   29   40   51   62   64   75    5
+   26   28   39   50   61   72   74    4   15
+   36   38   49   60   71   73    3   14   25
+   37   48   59   70   81    2   13   24   35
+
+>> sum(A, 1)
+ans =
+
+   369   369   369   369   369   369   369   369   369
+
+>> sum(A,2) % sum up each row of A
+ans =
+
+   369
+   369
+   369
+   369
+   369
+   369
+   369
+   369
+   369
+
+>> eye(9)  % get a diagonal matrix
+ans =
+
+Diagonal Matrix
+
+   1   0   0   0   0   0   0   0   0
+   0   1   0   0   0   0   0   0   0
+   0   0   1   0   0   0   0   0   0
+   0   0   0   1   0   0   0   0   0
+   0   0   0   0   1   0   0   0   0
+   0   0   0   0   0   1   0   0   0
+   0   0   0   0   0   0   1   0   0
+   0   0   0   0   0   0   0   1   0
+   0   0   0   0   0   0   0   0   1
+
+>> A .* eye(9)
+ans =
+
+   47    0    0    0    0    0    0    0    0
+    0   68    0    0    0    0    0    0    0
+    0    0    8    0    0    0    0    0    0
+    0    0    0   20    0    0    0    0    0
+    0    0    0    0   41    0    0    0    0
+    0    0    0    0    0   62    0    0    0
+    0    0    0    0    0    0   74    0    0
+    0    0    0    0    0    0    0   14    0
+    0    0    0    0    0    0    0    0   35
+
+>> A .* eye(9)  % this gets the diagonals...
+ans =
+
+   47    0    0    0    0    0    0    0    0
+    0   68    0    0    0    0    0    0    0
+    0    0    8    0    0    0    0    0    0
+    0    0    0   20    0    0    0    0    0
+    0    0    0    0   41    0    0    0    0
+    0    0    0    0    0   62    0    0    0
+    0    0    0    0    0    0   74    0    0
+    0    0    0    0    0    0    0   14    0
+    0    0    0    0    0    0    0    0   35
+
+>> sum(sum(A.*eye(9)))
+ans = 369
+>> sum(sum(A.*flipud(eye(9))))
+ans = 369
+>> flipup(eye(9))
+error: 'flipup' undefined near line 1, column 1
+>> flipud(eye(9))
+ans =
+
+Permutation Matrix
+
+   0   0   0   0   0   0   0   0   1
+   0   0   0   0   0   0   0   1   0
+   0   0   0   0   0   0   1   0   0
+   0   0   0   0   0   1   0   0   0
+   0   0   0   0   1   0   0   0   0
+   0   0   0   1   0   0   0   0   0
+   0   0   1   0   0   0   0   0   0
+   0   1   0   0   0   0   0   0   0
+   1   0   0   0   0   0   0   0   0
+
+>> flipud(eye(9))  % opposite diagonals
+ans =
+
+Permutation Matrix
+
+   0   0   0   0   0   0   0   0   1
+   0   0   0   0   0   0   0   1   0
+   0   0   0   0   0   0   1   0   0
+   0   0   0   0   0   1   0   0   0
+   0   0   0   0   1   0   0   0   0
+   0   0   0   1   0   0   0   0   0
+   0   0   1   0   0   0   0   0   0
+   0   1   0   0   0   0   0   0   0
+   1   0   0   0   0   0   0   0   0
+
+>> A = magix(3)
+error: 'magix' undefined near line 1, column 1
+>> A = magic(3)
+A =
+
+   8   1   6
+   3   5   7
+   4   9   2
+
+>> pinv(A)
+ans =
+
+   0.147222  -0.144444   0.063889
+  -0.061111   0.022222   0.105556
+  -0.019444   0.188889  -0.102778
+
+>> temp = pinv(A)
+temp =
+
+   0.147222  -0.144444   0.063889
+  -0.061111   0.022222   0.105556
+  -0.019444   0.188889  -0.102778
+
+>> temp * A
+ans =
+
+   1.0000e+00   2.0817e-16  -3.1641e-15
+  -6.1062e-15   1.0000e+00   6.2450e-15
+   3.0531e-15   4.1633e-17   1.0000e+00
+
+>> pinv(A)  % inverse of a matrix
+ans =
+
+   0.147222  -0.144444   0.063889
+  -0.061111   0.022222   0.105556
+  -0.019444   0.188889  -0.102778
+
+>>

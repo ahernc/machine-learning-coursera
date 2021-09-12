@@ -1,0 +1,288 @@
+>> % Control Statements, if, while, etc.
+>> v = zeros(10, 1)
+v =
+
+   0
+   0
+   0
+   0
+   0
+   0
+   0
+   0
+   0
+   0
+
+>> for i=1:10,
+        v(i) = 2 ^i;
+   end;
+>> v
+v =
+
+      2
+      4
+      8
+     16
+     32
+     64
+    128
+    256
+    512
+   1024
+
+>> indices = 1:10;
+>> indices
+indices =
+
+    1    2    3    4    5    6    7    8    9   10
+
+>> for i = indices,
+    disp(i);
+   end;
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+>> %break and continue can be used...
+>> while i <= 5,
+    set v(i) = 100;
+     i = i + 1;
+   end;
+>> v
+v =
+
+      2
+      4
+      8
+     16
+     32
+     64
+    128
+    256
+    512
+   1024
+
+>> while i <= 5,
+    v(i) = 100,
+    i = i + 1;
+   end;
+>> v
+v =
+
+      2
+      4
+      8
+     16
+     32
+     64
+    128
+    256
+    512
+   1024
+
+>> while i <= 5,
+    v(i) = 100;
+    i = i + 1;
+   end;
+>> v
+v =
+
+      2
+      4
+      8
+     16
+     32
+     64
+    128
+    256
+    512
+   1024
+
+>> while i <= 5,
+    disp(i);
+    i = i+1;
+  end;
+>> i =1
+i = 1
+>> while true,
+      v(i) = 999;
+      i = i + 1;
+      if i == 6,
+         break;
+      end;
+   end;
+>> v
+v =
+
+    999
+    999
+    999
+    999
+    999
+     64
+    128
+    256
+    512
+   1024
+
+>> v(1)
+ans = 999
+>> v(1) = 2
+v =
+
+      2
+    999
+    999
+    999
+    999
+     64
+    128
+    256
+    512
+   1024
+
+>> if v(1) == 1,
+    disp('The value is 1');
+    eleif v(1) == 2),
+end;
+>> if v(1) == 1,
+     disp('The value is 1');
+   elseif v(1) == 2,
+     disp('The value is 2');
+   else
+     disp('The value is not one or two');
+   end;
+The value is 2
+>> %%%% Functions
+>> sqaureThisNumber(5)
+warning: function name 'squareThisNumber' does not agree with function filename 'C:\Users\colma\source\repos\machine-
+learning-coursera\week-2\sqaureThisNumber.m'
+y = 25
+ans = 25
+>> y = sqaureThisNumber(5)
+y = 25
+y = 25
+>> % Octave search path (optional)...
+>> % addpath('C:\x\y\z')    ... this would include path
+>> y = sqaureThisNumber(5)
+warning: function name 'squareThisNumber' does not agree with function filename 'C:\Users\colma\source\repos\machine-
+learning-coursera\week-2\sqaureThisNumber.m'
+y = 25
+>> y = sqaureThisNumber(5)
+error: 'sqaureThisNumber' undefined near line 1, column 1
+>> y = squareThisNumber(5)
+y = 25
+>> y = squareAndCubeThisNumber(5)
+y = 125
+>> [a, b] = squareAndCubeThisNumber(5)
+error: 'y2' undefined near line 1, column 1
+error: called from
+    squareAndCubeThisNumber at line 5 column 4
+>> [a, b] = squareAndCubeThisNumber(5)
+a = 25
+b = 125
+>> X = [1 1; 1 2; 1 3;]
+X =
+
+   1   1
+   1   2
+   1   3
+
+>> Y = [1;2;3]
+Y =
+
+   1
+   2
+   3
+
+>> j = costFunctionJ(X, y, theta)
+error: 'theta' undefined near line 1, column 1
+>> theta=[0;1]
+theta =
+
+   0
+   1
+
+>> j = costFunctionJ(X, y, theta)
+warning: function name 'costFunction' does not agree with function filename 'C:\Users\colma\source\repos\machine-lear
+ning-coursera\week-2\costFunctionJ.m'
+j = 7564.8
+>> j = costFunctionJ(X, y, theta)
+j = 7564.8
+>> theta = [0; 0]
+theta =
+
+   0
+   0
+
+>> j = costFunctionJ(X, y, theta)
+j = 7812.5
+>> theta = [0; 0];
+>> j = costFunctionJ(X, y, theta)
+j = 7812.5
+>> (1^1 + 2^2 + 3^3)/(2*m)
+error: 'm' undefined near line 1, column 1
+>> (1^1 + 2^2 + 3^3)/(2*3)
+ans = 5.3333
+>> A
+A =
+
+   17   24    1    8   15
+   23    5    7   14   16
+    4    6   13   20   22
+   10   12   19   21    3
+   11   18   25    2    9
+
+>> X
+X =
+
+   1   1
+   1   2
+   1   3
+
+>> theta
+theta =
+
+   0
+   0
+
+>> theta = [0;1]
+theta =
+
+   0
+   1
+
+>> j = costFunctionJ(X, y, theta)
+j = 7564.8
+>> y
+y = 125
+>> y = [1;2;3]
+y =
+
+   1
+   2
+   3
+
+>> j = costFunctionJ(X, y, theta)
+j = 0
+>> % mistake was with y earlier!
+>> theta = [0;0]
+theta =
+
+   0
+   0
+
+>> j = costFunctionJ(X, y, theta)
+j = 2.3333
+>> (1^2 + 2^2 + 3^3)/(2*3)
+ans = 5.3333
+>> (1^2 + 2^2 + 3^2)/(2*3)  % this is the proof!  not earlier with the mistakes where I was cubing
+ans = 2.3333
+>> plot(X, y)
+>>
